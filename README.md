@@ -1,20 +1,9 @@
-# Quickstart Plugin for NodeBB
+# Tenor GIF Integration for NodeBB
 
-A starter kit for quickly creating NodeBB plugins. Comes with a pre-setup LESS file, server side JS script with an `action:app.load` hook, and a client-side script. Most plugins need at least one of the above, so this ought to save you some time. For a full list of hooks have a look at our [wiki page](https://github.com/NodeBB/NodeBB/wiki/Hooks), and for more information about creating plugins please visit our [documentation portal](https://docs.nodebb.org/).
+![Searching 'pizza' in the via modal window](/screenshot.png)
 
-Fork this or copy it, and using your favourite text editor find and replace all instances of `nodebb-plugin-quickstart` with `nodebb-plugin-your-plugins-name`. Change the author's name in the LICENSE and package.json files.
+This plugin adds a "GIF" button to the default composer and allows you to search and insert GIFs. It is powered by the [Tenor GIF service](https://tenor.com). Kudos to Tenor for providing a simple and easy-to-use API! ❤️
 
-Once you're done don't forget to publish it on NPM, and make a thread about it [here](https://docs.nodebb.org/en/latest/plugins/hooks.html).
+Install the plugin via the admin dashboard, or `npm i nodebb-plugin-tenor-gif`. You'll need to register for a Tenor GIF API key here: https://tenor.com/developer/dashboard
 
-
-## Hello World
-
-Really simple, just edit `static/lib/main.js` and paste in `console.log('hello world');`, and that's it!
-
-## Installation
-
-    npm install nodebb-plugin-quickstart
-
-## Screenshots
-
-Don't forget to add screenshots!
+Then insert said API, save the config, and reload/restart NodeBB.
