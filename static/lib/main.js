@@ -77,7 +77,6 @@ $(document).ready(function () {
 	};
 
 	Tenor.select = function (textarea, selectionStart, selectionEnd, url) {
-		console.log('selecting', arguments);
 		require([
 			'composer/formatting',
 			'composer/controls',
