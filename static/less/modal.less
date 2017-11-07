@@ -1,0 +1,30 @@
+.tenor-gif-modal {
+	#gif-results {
+		overflow-x: auto;
+		white-space: nowrap;
+
+		img {
+			display: inline-block;
+			height: 12rem;
+			padding-top: 1rem;
+			cursor: pointer;
+
+			&:hover {
+				opacity: 0.8;
+			}
+		}
+	}
+}
+
+/* Composer formatting icon override */
+.fa-tenor-gif::before {
+	content: 'GIF';
+	font-size: 1rem;
+	font-family: sans;
+	background: #333;
+	color: #fff;
+	padding: 0.25rem 0.5rem;
+	border-radius: 0.5em;
+	position: relative;
+	top: -0.2rem;
+}

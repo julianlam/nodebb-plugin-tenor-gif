@@ -1,16 +1,20 @@
 {
-	"id": "nodebb-plugin-quickstart",
-	"url": "https://github.com/NodeBB/nodebb-plugin-quickstart",
+	"id": "nodebb-plugin-tenor-gif",
+	"url": "https://github.com/NodeBB/nodebb-plugin-tenor-gif",
 	"library": "./library.js",
 	"hooks": [
 		{ "hook": "static:app.load", "method": "init" },
-		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" }
+		{ "hook": "filter:admin.header.build", "method": "addAdminNavigation" },
+		{ "hook": "filter:composer.formatting", "method": "registerFormatting" }
 	],
 	"scripts": [
 		"static/lib/main.js"
 	],
 	"acpScripts": [
 		"static/lib/admin.js"
+	],
+	"less": [
+		"static/less/modal.less"
 	],
 	"templates": "static/templates"
 }

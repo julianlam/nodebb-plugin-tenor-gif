@@ -1,0 +1,1 @@
+<!-- BEGIN gifs --><img data-url="{../url}" src="{../thumb}" /><!-- END -->
