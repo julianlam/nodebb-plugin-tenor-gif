@@ -23,6 +23,7 @@ $(document).ready(function () {
 							title: 'Insert GIF',
 							message: html,
 							className: 'tenor-gif-modal',
+							onEscape: true,
 						});
 
 						var queryEl = modal.find('#gif-query');
@@ -47,7 +48,9 @@ $(document).ready(function () {
 									query: queryEl.val(),
 								}, function (err, gifs) {
 									if (err) {
-										return resultsEl.addClass('alert', 'alert-warning').text(err.message);
+										return translator.translate(err.message, function (translated) {
+											resultsEl.addClass('alert alert-warning').text(translated);
+										});
 									}
 
 									Tenor.populateDOM(resultsEl, gifs);

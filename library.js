@@ -3,6 +3,7 @@
 var controllers = require('./lib/controllers');
 var websockets = require('./websockets');
 var meta = module.parent.require('./meta');
+var winston = module.parent.require('winston');
 
 var request = require('request');
 
@@ -27,6 +28,10 @@ plugin.refreshSettings = function (callback) {
 	meta.settings.get('tenor-gif', function (err, settings) {
 		Object.assign(plugin._settings, settings);
 
+		if (!settings.key || !settings.key.length) {
+			winston.warn('[plugin/tenor-gif] Invalid or missing API Key, plugin disabled');
+		}
+
 		callback(err);
 	});
 };
@@ -42,6 +47,10 @@ plugin.addAdminNavigation = function (header, callback) {
 };
 
 plugin.registerFormatting = function (payload, callback) {
+	if (!plugin._settings.key) {
+		return setImmediate(callback, null, payload);
+	}
+
 	payload.options.push({ name: 'gif', className: 'fa fa-tenor-gif', title: 'Insert GIF' });
 	callback(null, payload);
 };
@@ -52,6 +61,10 @@ plugin.query = function (query, callback) {
 		method: 'get',
 		json: true,
 	}, function (err, res, body) {
+		if (!plugin._settings.key || body.hasOwnProperty('error')) {
+			err = new Error('[[error:invalid-login-credentials]]');
+		}
+
 		if (err) {
 			return callback(err);
 		}
