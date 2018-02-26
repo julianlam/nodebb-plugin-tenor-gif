@@ -118,17 +118,14 @@ $(document).ready(function () {
 		require([
 			'composer/formatting',
 			'composer/controls',
-			'translator',
-		], function (formatting, controls, translator) {
-			translator.getTranslations(window.config.userLang || window.config.defaultLang, 'markdown', function (strings) {
-				if (selectionStart === selectionEnd) {
-					controls.insertIntoTextarea(textarea, '![' + query + '](' + url + ')');
-					controls.updateTextareaSelection(textarea, selectionStart + query.length + 4, selectionEnd + query.length + url.length + 4);
-				} else {
-					var wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '![', '](' + url + ')');
-					controls.updateTextareaSelection(textarea, selectionEnd + 4 - wrapDelta[1], selectionEnd + url.length + 4 - wrapDelta[1]);
-				}
-			});
+		], function (formatting, controls) {
+			if (selectionStart === selectionEnd) {
+				controls.insertIntoTextarea(textarea, '![' + query + '](' + url + ')');
+				controls.updateTextareaSelection(textarea, selectionStart + query.length + 4, selectionEnd + query.length + url.length + 4);
+			} else {
+				var wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '![', '](' + url + ')');
+				controls.updateTextareaSelection(textarea, selectionEnd + 4 - wrapDelta[1], selectionEnd + url.length + 4 - wrapDelta[1]);
+			}
 		});
 	};
 });
