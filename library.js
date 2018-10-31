@@ -2,8 +2,8 @@
 
 var controllers = require('./lib/controllers');
 var websockets = require('./websockets');
-var meta = module.parent.require('./meta');
-var winston = module.parent.require('winston');
+var meta = require.main.require('./src/meta');
+var winston = require.main.require('winston');
 
 var request = require('request');
 
