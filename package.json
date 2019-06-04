@@ -24,10 +24,10 @@
     "compatibility": "^1.6.0"
   },
   "dependencies": {
-    "request": "^2.83.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {
-    "eslint": "^4.9.0",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.7.0"
   }
