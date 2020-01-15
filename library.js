@@ -61,8 +61,13 @@ plugin.query = function (query, callback) {
 		method: 'get',
 		json: true,
 	}, function (err, res, body) {
-		if (!plugin._settings.key || body && body.hasOwnProperty('error')) {
+		if (!plugin._settings.key || (body && body.hasOwnProperty('error'))) {
 			err = new Error('[[error:invalid-login-credentials]]');
+		}
+
+		// Malformed return handling
+		if (!body || !body.results) {
+			return callback(new Error('[[error:invalid-data]]'));
 		}
 
 		if (err) {
