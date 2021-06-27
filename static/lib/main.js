@@ -15,7 +15,9 @@ $(document).ready(function () {
 
 	$(window).on('action:composer.loaded', function () {
 		if ($.Redactor) {
-			$.Redactor.opts.plugins.push('tenor-gif');
+			if ($.Redactor.opts.plugins.indexOf('tenor-gif') === -1) {
+                		$.Redactor.opts.plugins.push('tenor-gif');
+            		}
 		}
 	});
 
