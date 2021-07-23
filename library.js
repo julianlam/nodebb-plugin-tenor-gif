@@ -47,11 +47,10 @@ plugin.addAdminNavigation = function (header, callback) {
 };
 
 plugin.registerFormatting = function (payload, callback) {
-	if (!plugin._settings.key) {
-		return setImmediate(callback, null, payload);
+	if (plugin._settings.key) {
+		payload.options.push({ name: 'gif', className: 'fa fa-tenor-gif', title: 'Insert GIF' });
 	}
 
-	payload.options.push({ name: 'gif', className: 'fa fa-tenor-gif', title: 'Insert GIF' });
 	callback(null, payload);
 };
 
