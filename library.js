@@ -56,7 +56,7 @@ plugin.registerFormatting = function (payload, callback) {
 
 plugin.query = function (query, callback) {
 	request({
-		url: 'https://api.tenor.com/v1/search?q=' + query + '&key=' + plugin._settings.key,
+		url: 'https://tenor.googleapis.com/v2/search?q=' + query + '&key=' + plugin._settings.key,
 		method: 'get',
 		json: true,
 	}, function (err, res, body) {
@@ -76,8 +76,8 @@ plugin.query = function (query, callback) {
 		// Collapse results down to array of images
 		var gifs = body.results.reduce(function (memo, cur) {
 			memo.push({
-				url: cur.media[0].gif.url,
-				thumb: cur.media[0].tinygif.url,
+				url: cur.media_formats.gif.url,
+				thumb: cur.media_formats.tinygif.url,
 			});
 
 			return memo;
