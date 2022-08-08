@@ -1,21 +1,22 @@
 'use strict';
 
-var controllers = require('./lib/controllers');
-var websockets = require('./websockets');
-var meta = require.main.require('./src/meta');
-var winston = require.main.require('winston');
+const request = require('request');
 
-var request = require('request');
+const controllers = require('./lib/controllers');
+const websockets = require('./websockets');
 
-var plugin = {
+const meta = require.main.require('./src/meta');
+const winston = require.main.require('winston');
+
+const plugin = {
 	_settings: {
 		key: null,
 	},
 };
 
 plugin.init = function (params, callback) {
-	var router = params.router;
-	var hostMiddleware = params.middleware;
+	const { router } = params;
+	const hostMiddleware = params.middleware;
 
 	router.get('/admin/plugins/tenor-gif', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
 	router.get('/api/admin/plugins/tenor-gif', controllers.renderAdminPage);
@@ -25,7 +26,7 @@ plugin.init = function (params, callback) {
 };
 
 plugin.refreshSettings = function (callback) {
-	meta.settings.get('tenor-gif', function (err, settings) {
+	meta.settings.get('tenor-gif', (err, settings) => {
 		Object.assign(plugin._settings, settings);
 
 		if (!settings.key || !settings.key.length) {
@@ -56,10 +57,10 @@ plugin.registerFormatting = function (payload, callback) {
 
 plugin.query = function (query, callback) {
 	request({
-		url: 'https://tenor.googleapis.com/v2/search?q=' + query + '&key=' + plugin._settings.key,
+		url: `https://tenor.googleapis.com/v2/search?q=${query}&key=${plugin._settings.key}`,
 		method: 'get',
 		json: true,
-	}, function (err, res, body) {
+	}, (err, res, body) => {
 		if (!plugin._settings.key || (body && body.hasOwnProperty('error'))) {
 			err = new Error('[[error:invalid-login-credentials]]');
 		}
@@ -74,7 +75,7 @@ plugin.query = function (query, callback) {
 		}
 
 		// Collapse results down to array of images
-		var gifs = body.results.reduce(function (memo, cur) {
+		const gifs = body.results.reduce((memo, cur) => {
 			memo.push({
 				url: cur.media_formats.gif.url,
 				thumb: cur.media_formats.tinygif.url,

@@ -1,7 +1,5 @@
 'use strict';
 
-/* globals $, app, socket */
-
 define('admin/plugins/tenor-gif', ['settings'], function (Settings) {
 	var ACP = {};
 

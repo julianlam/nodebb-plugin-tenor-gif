@@ -1,7 +1,5 @@
 'use strict';
 
-/* globals $, document, window, socket, bootbox */
-
 $(document).ready(function () {
 	var Tenor = {};
 
@@ -123,10 +121,14 @@ $(document).ready(function () {
 		], function (formatting, controls) {
 			if (selectionStart === selectionEnd) {
 				controls.insertIntoTextarea(textarea, '![' + query + '](' + url + ')');
-				controls.updateTextareaSelection(textarea, selectionStart + query.length + 4, selectionEnd + query.length + url.length + 4);
+				controls.updateTextareaSelection(
+					textarea, selectionStart + query.length + 4, selectionEnd + query.length + url.length + 4
+				);
 			} else {
 				var wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '![', '](' + url + ')');
-				controls.updateTextareaSelection(textarea, selectionEnd + 4 - wrapDelta[1], selectionEnd + url.length + 4 - wrapDelta[1]);
+				controls.updateTextareaSelection(
+					textarea, selectionEnd + 4 - wrapDelta[1], selectionEnd + url.length + 4 - wrapDelta[1]
+				);
 			}
 		});
 	};
