@@ -83,10 +83,6 @@ $(document).ready(function () {
 				});
 
 				queryEl.on('keyup', function () {
-					if (!queryEl.val().length) {
-						return;
-					}
-
 					if (queryTimeout) {
 						clearTimeout(queryTimeout);
 					}
@@ -110,6 +106,9 @@ $(document).ready(function () {
 					callback(this.getAttribute('data-url'), queryEl.val());
 					modal.modal('hide');
 				});
+
+				// Start with empty query
+				queryEl.trigger('keyup');
 			});
 		});
 	};

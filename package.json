@@ -27,7 +27,8 @@
     "@commitlint/cli": "^9.1.2",
     "eslint": "8.x",
     "lint-staged": "^10.0.9",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",

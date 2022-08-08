@@ -7,7 +7,9 @@ module.exports.init = function () {
 	const main = module.parent.exports;
 
 	SocketPlugins['tenor-gif'].query = function (socket, data, callback) {
-		main.query(data.query, callback);
+		main.query(data.query).then((gifs) => {
+			callback(null, gifs);
+		}).catch(callback);
 	};
 };
 

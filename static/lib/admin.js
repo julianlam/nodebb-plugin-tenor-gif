@@ -12,10 +12,7 @@ define('admin/plugins/tenor-gif', ['settings'], function (Settings) {
 					type: 'success',
 					alert_id: 'tenor-gif-saved',
 					title: 'Settings Saved',
-					message: 'Please reload your NodeBB to apply these settings',
-					clickfn: function () {
-						socket.emit('admin.reload');
-					},
+					timeout: 5000,
 				});
 			});
 		});

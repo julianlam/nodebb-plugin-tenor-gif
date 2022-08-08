@@ -12,6 +12,19 @@
 				<label for="key">API Key</label>
 				<input type="text" id="key" name="key" title="API Key" class="form-control" placeholder="API Key">
 			</div>
+			<div class="form-group">
+				<label for="contentFilter">Content Filter</label>
+				<select class="form-control" id="contentFilter" name="contentFilter">
+					<option value="off">Off</option>
+					<option value="low">Low</option>
+					<option value="medium" selected>Medium (default)</option>
+					<option value="high">High</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="limit">Limit results</label>
+				<input class="form-control" type="number" min="1" max="50" id="limit" placeholder="10" name="limit" />
+			</div>
 		</div>
 	</div>
 </form>
