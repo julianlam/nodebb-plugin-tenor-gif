@@ -8,15 +8,13 @@ const websockets = require('./websockets');
 const nconf = require.main.require('nconf');
 const meta = require.main.require('./src/meta');
 const slugify = require.main.require('./src/slugify');
-const cacheCreate = require.main.require('./src/cacheCreate');
+const ttlCache = require.main.require('./src/cache/ttl');
 
 const plugin = module.exports;
 
-plugin._cache = cacheCreate({
-	name: 'gifs',
-	max: 20,
-	length: function (n) { return n.length; },
-	maxAge: 1000 * 60 * 60, // 1 hour
+plugin._cache = ttlCache({
+	name: 'tenor-gif',
+	ttl: 1000 * 60 * 60, // 1 hour
 });
 
 plugin.init = async (params) => {
