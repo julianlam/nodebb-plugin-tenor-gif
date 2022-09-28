@@ -84,6 +84,7 @@ plugin.query = async (query) => {
 		memo.push({
 			url: cur.media_formats.gif.url,
 			thumb: cur.media_formats.tinygif.url,
+			alt: cur.content_description,
 		});
 
 		return memo;

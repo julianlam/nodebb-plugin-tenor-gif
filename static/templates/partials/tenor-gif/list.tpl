@@ -1,1 +1,1 @@
-<!-- BEGIN gifs --><img data-url="{../url}" src="{../thumb}" /><!-- END -->
+<!-- BEGIN gifs --><img data-url="{../url}" src="{../thumb}" alt="{../alt}" /><!-- END -->

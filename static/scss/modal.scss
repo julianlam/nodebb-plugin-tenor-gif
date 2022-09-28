@@ -19,12 +19,12 @@
 /* Composer formatting icon override */
 .fa-tenor-gif::before {
 	content: 'GIF';
-	font-size: 1rem;
+	font-size: calc($font-size-base / 2);
 	font-family: sans;
 	background: #333;
 	color: #fff;
 	padding: 0.25rem 0.5rem;
 	border-radius: 0.5em;
 	position: relative;
-	top: -0.2rem;
+	top: -0.15rem;
 }

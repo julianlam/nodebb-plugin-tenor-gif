@@ -24,8 +24,8 @@ $(document).ready(function () {
 		], function (formatting, controls) {
 			if (formatting && controls) {
 				formatting.addButtonDispatch('gif', function (textarea, selectionStart, selectionEnd) {
-					Tenor.showModal(function (url, query) {
-						Tenor.select(textarea, selectionStart, selectionEnd, url, query);
+					Tenor.showModal(function (url, query, alt) {
+						Tenor.select(textarea, selectionStart, selectionEnd, url, query, alt);
 					});
 				});
 			}
@@ -103,7 +103,7 @@ $(document).ready(function () {
 				});
 
 				resultsEl.on('click', 'img[data-url]', function () {
-					callback(this.getAttribute('data-url'), queryEl.val());
+					callback(this.getAttribute('data-url'), queryEl.val(), this.getAttribute('alt'));
 					modal.modal('hide');
 				});
 
@@ -113,15 +113,15 @@ $(document).ready(function () {
 		});
 	};
 
-	Tenor.select = function (textarea, selectionStart, selectionEnd, url, query) {
+	Tenor.select = function (textarea, selectionStart, selectionEnd, url, query, alt) {
 		require([
 			'composer/formatting',
 			'composer/controls',
 		], function (formatting, controls) {
 			if (selectionStart === selectionEnd) {
-				controls.insertIntoTextarea(textarea, '![' + query + '](' + url + ')');
+				controls.insertIntoTextarea(textarea, '![' + alt + '](' + url + ')');
 				controls.updateTextareaSelection(
-					textarea, selectionStart + query.length + 4, selectionEnd + query.length + url.length + 4
+					textarea, selectionStart + alt.length + 4, selectionEnd + alt.length + url.length + 4
 				);
 			} else {
 				var wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '![', '](' + url + ')');
