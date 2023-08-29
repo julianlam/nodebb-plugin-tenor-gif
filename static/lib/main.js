@@ -82,6 +82,13 @@ $(document).ready(function () {
 					queryEl.focus();
 				});
 
+				resultsEl.on('wheel', (e) => {
+					e.preventDefault();
+					resultsEl.get(0).scrollBy({
+						left: e.originalEvent.deltaY < 0 ? -50 : 50,
+					});
+				});
+
 				queryEl.on('keyup', function () {
 					if (queryTimeout) {
 						clearTimeout(queryTimeout);

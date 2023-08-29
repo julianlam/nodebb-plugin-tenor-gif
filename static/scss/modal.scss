@@ -2,10 +2,11 @@
 	#gif-results {
 		overflow-x: auto;
 		white-space: nowrap;
-
+		max-height: 80vh;
 		img {
 			cursor: pointer;
-
+			width: 33%;
+			padding: $spacer * 0.25;
 			&:hover {
 				opacity: 0.8;
 			}

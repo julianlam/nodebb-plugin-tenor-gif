@@ -49,7 +49,7 @@ plugin.registerFormatting = async (payload) => {
 plugin.query = async (query) => {
 	let { contentFilter, key, limit } = await meta.settings.get('tenor-gif');
 	if (!limit || limit < 1 || limit > 50) {
-		limit = 12;
+		limit = 15;
 	}
 
 	query = String(query).trim();

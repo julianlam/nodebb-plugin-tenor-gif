@@ -28,7 +28,7 @@
 						</div>
 						<div class="mb-3">
 							<label for="limit">Limit results</label>
-							<input class="form-control" type="number" min="1" max="50" id="limit" placeholder="12" name="limit" />
+							<input class="form-control" type="number" min="1" max="50" id="limit" placeholder="15" name="limit" />
 						</div>
 					</div>
 				</div>
