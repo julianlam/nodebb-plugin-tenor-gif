@@ -47,12 +47,15 @@ plugin.registerFormatting = async (payload) => {
 };
 
 plugin.filterMessagingLoadRoom = (payload) => {
-	payload.room.composerActions.push({
-		action: 'tenor-gif',
-		class: 'd-none d-md-flex',
-		icon: 'fa-tenor-gif',
-		title: 'Tenor GIF',
-	});
+	if (payload && payload.room && Array.isArray(payload.room.composerActions)) {
+		payload.room.composerActions.push({
+			action: 'tenor-gif',
+			class: 'd-none d-md-flex',
+			icon: 'fa-tenor-gif',
+			title: 'Tenor GIF',
+		});
+	}
+
 	return payload;
 };
 
