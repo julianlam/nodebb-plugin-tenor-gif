@@ -17,6 +17,30 @@ $(document).ready(function () {
 		}
 	});
 
+	$(window).on('action:chat.loaded', (ev, container) => {
+		const containerEl = $(container);
+		const textarea = containerEl.find('[component="chat/input"]')[0];
+		containerEl.find('[data-action="tenor-gif"]').on('click', () => {
+			require([
+				'composer/controls',
+			], function (controls) {
+				Tenor.showModal(function (url, query, alt) {
+					const selectionStart = textarea.selectionStart;
+					const selectionEnd = textarea.selectionEnd;
+					if (selectionStart === selectionEnd) {
+						controls.insertIntoTextarea(textarea, '![' + alt + '](' + url + ')');
+					} else {
+						const wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '![', '](' + url + ')');
+						controls.updateTextareaSelection(
+							textarea, selectionEnd + 4 - wrapDelta[1], selectionEnd + url.length + 4 - wrapDelta[1]
+						);
+					}
+					containerEl.find('[component="chat/input"]').trigger('input');
+				});
+			});
+		});
+	});
+
 	Tenor.prepareFormattingTools = function () {
 		require([
 			'composer/formatting',

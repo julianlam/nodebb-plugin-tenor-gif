@@ -46,6 +46,16 @@ plugin.registerFormatting = async (payload) => {
 	return payload;
 };
 
+plugin.filterMessagingLoadRoom = (payload) => {
+	payload.room.composerActions.push({
+		action: 'tenor-gif',
+		class: 'd-none d-md-flex',
+		icon: 'fa-tenor-gif',
+		title: 'Tenor GIF',
+	});
+	return payload;
+};
+
 plugin.query = async (query) => {
 	let { contentFilter, key, limit } = await meta.settings.get('tenor-gif');
 	if (!limit || limit < 1 || limit > 50) {
