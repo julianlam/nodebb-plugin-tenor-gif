@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-tenor-gif",
-  "version": "3.1.6",
+  "version": "3.1.7",
   "description": "",
   "main": "library.js",
   "repository": {
