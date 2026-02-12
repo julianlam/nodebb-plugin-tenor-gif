@@ -14,6 +14,7 @@ const plugin = module.exports;
 
 plugin._cache = ttlCache({
 	name: 'tenor-gif',
+	max: 1000,
 	ttl: 1000 * 60 * 60, // 1 hour
 });
 
