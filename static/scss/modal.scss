@@ -17,9 +17,9 @@
 .fa-tenor-gif::before {
 	content: 'GIF';
 	font-size: calc($font-size-base / 2);
-	font-family: sans;
-	background: #333;
-	color: #fff;
+	font-family: $font-family-sans-serif;
+	background: var(--bs-body-color);
+	color: var(--bs-body-bg);
 	padding: 0.25rem 0.25rem;
 	border-radius: 0.5em;
 	position: relative;
