@@ -1,6 +1,6 @@
 'use strict';
 
-const request = require('request-promise-native');
+const request = require.main.require('./src/request');
 
 const controllers = require('./lib/controllers');
 const websockets = require('./websockets');
@@ -68,9 +68,9 @@ plugin.query = async (query) => {
 
 	query = String(query).trim();
 	const commonArgs = `&limit=${limit}&contentfilter=${contentFilter || 'medium'}&key=${key}&client_key=nodebb-${slugify(nconf.get('url'))}`;
-	let url = `https://tenor.googleapis.com/v2/featured?type=featured${commonArgs}`;
+	let url = `https://api.klipy.com/v2/featured?type=featured${commonArgs}`;
 	if (query) {
-		url = `https://tenor.googleapis.com/v2/search?q=${query}${commonArgs}`;
+		url = `https://api.klipy.com/v2/search?q=${query}${commonArgs}`;
 	}
 
 	let gifs = plugin._cache.get(query);
@@ -78,11 +78,7 @@ plugin.query = async (query) => {
 		return gifs;
 	}
 
-	const body = await request({
-		url,
-		method: 'get',
-		json: true,
-	});
+	const { body } = await request.get(url);
 
 	if (!key || (body && body.hasOwnProperty('error'))) {
 		throw new Error('[[error:invalid-login-credentials]]');

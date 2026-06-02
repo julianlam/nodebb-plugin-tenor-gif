@@ -8,10 +8,7 @@
 					<div class="col-sm-2 col-12 settings-header">General</div>
 					<div class="col-sm-10 col-12">
 						<p class="lead">
-							Sign up for your Tenor GIF API Key from the <a href="https://console.cloud.google.com/apis/credentials">Google Cloud Console</a>, then enter it below and reload your NodeBB.
-						</p>
-						<p>
-							<strong>Be careful</strong>: If you use the <i class="fa fa-copy"></i> button to copy the API key, it'll add spaces to the beginning and end. You'll need to remove those.
+							Sign up for your Klipy API Key at the <a href="https://partner.klipy.com/">Klipy Partner Portal</a>, then enter it below and reload your NodeBB.
 						</p>
 						<div class="mb-3">
 							<label for="key">API Key</label>

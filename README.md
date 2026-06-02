@@ -1,14 +1,13 @@
-# Tenor GIF Integration for NodeBB
+# Klipy GIF Integration for NodeBB
 
 ![Searching 'pizza' in the via modal window](/screenshot.png)
 
-This plugin adds a "GIF" button to the default composer and allows you to search and insert GIFs. It is powered by the [Tenor GIF service](https://tenor.com). Kudos to Tenor/Alphabet for providing a simple and easy-to-use API! ❤️
+This plugin adds a "GIF" button to the default composer and allows you to search and insert GIFs. It is powered by the [Klipy GIF service](https://klipy.com).
 
-Install the plugin via the admin dashboard, or `npm i nodebb-plugin-tenor-gif`. You'll need to register for a Tenor GIF API key from the [Google Cloud Console](https://console.cloud.google.com/apis/credentials).
+Install the plugin via the admin dashboard, or `npm i nodebb-plugin-tenor-gif`. You'll need to register for a Klipy API key from the [Klipy Partner Portal](https://partner.klipy.com/).
 
-Then insert said API, save the config, and reload/restart NodeBB.
+Then insert said API key, save the config, and reload/restart NodeBB.
 
-# Migrating from v1 to v2
+## Migration from Tenor
 
-We are now using v2 of the Tenor GIF API.
-Register for a new v2 API key from the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) and replace the existing key.
+Google has sunset the Tenor GIF API. This plugin now uses Klipy as its GIF provider. The Klipy API is fully compatible with the previous Tenor API — simply replace your old Tenor API key with a Klipy API key from the [Klipy Partner Portal](https://partner.klipy.com/) and everything continues to work.
