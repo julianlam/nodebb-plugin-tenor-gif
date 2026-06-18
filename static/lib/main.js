@@ -1,7 +1,7 @@
 'use strict';
 
 $(document).ready(function () {
-	var Tenor = {};
+	const Tenor = {};
 
 	$(window).on('action:composer.enhanced', function () {
 		Tenor.prepareFormattingTools();
@@ -60,15 +60,15 @@ $(document).ready(function () {
 		$.Redactor.prototype['tenor-gif'] = function () {
 			return {
 				init: function () {
-					var self = this;
-					var button = self.button.add('tenor-gif', 'Insert GIF');
+					const self = this;
+					const button = self.button.add('tenor-gif', 'Insert GIF');
 					self.button.setIcon(button, '<i class="fa fa-tenor-gif"></i>');
 					self.button.addCallback(button, self['tenor-gif'].onClick);
 				},
 				onClick: function () {
-					var self = this;
+					const self = this;
 					Tenor.showModal(function (url, query) {
-						var code = self.code.get();
+						let code = self.code.get();
 						code += '<p><img src="' + url + '" alt="' + query + '" /></p>';
 
 						self.code.set(code);
@@ -89,18 +89,17 @@ $(document).ready(function () {
 	};
 
 	Tenor.showModal = function (callback) {
-		require(['translator', 'benchpress'], function (translator, Benchpress) {
-			Benchpress.parse('plugins/tenor-gif/modal', {}, function (html) {
-				var modal = bootbox.dialog({
+		require(['benchpress', 'modals'], function (Benchpress, modals) {
+			Benchpress.parse('plugins/tenor-gif/modal', {}, async function (html) {
+				const modal = await modals.dialog({
 					title: 'Insert GIF',
 					message: html,
 					className: 'tenor-gif-modal',
 					onEscape: true,
 				});
 
-				var queryEl = modal.find('#gif-query');
-				var resultsEl = modal.find('#gif-results');
-				var queryTimeout;
+				const queryEl = modal.find('#gif-query');
+				const resultsEl = modal.find('#gif-results');
 
 				modal.on('shown.bs.modal', function () {
 					queryEl.focus();
@@ -113,25 +112,17 @@ $(document).ready(function () {
 					});
 				});
 
-				queryEl.on('keyup', function () {
-					if (queryTimeout) {
-						clearTimeout(queryTimeout);
-					}
+				queryEl.on('keyup', utils.debounce(function () {
+					socket.emit('plugins.tenor-gif.query', {
+						query: queryEl.val(),
+					}, function (err, gifs) {
+						if (err) {
+							resultsEl.addClass('alert alert-warning').translateText(err.message);
+						}
 
-					queryTimeout = setTimeout(function () {
-						socket.emit('plugins.tenor-gif.query', {
-							query: queryEl.val(),
-						}, function (err, gifs) {
-							if (err) {
-								return translator.translate(err.message, function (translated) {
-									resultsEl.addClass('alert alert-warning').text(translated);
-								});
-							}
-
-							Tenor.populateDOM(resultsEl, gifs);
-						});
-					}, 250);
-				});
+						Tenor.populateDOM(resultsEl, gifs);
+					});
+				}, 300));
 
 				resultsEl.on('click', 'img[data-url]', function () {
 					callback(this.getAttribute('data-url'), queryEl.val(), this.getAttribute('alt'));
@@ -155,7 +146,7 @@ $(document).ready(function () {
 					textarea, selectionStart + alt.length + 4, selectionEnd + alt.length + url.length + 4
 				);
 			} else {
-				var wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '![', '](' + url + ')');
+				const wrapDelta = controls.wrapSelectionInTextareaWith(textarea, '![', '](' + url + ')');
 				controls.updateTextareaSelection(
 					textarea, selectionEnd + 4 - wrapDelta[1], selectionEnd + url.length + 4 - wrapDelta[1]
 				);

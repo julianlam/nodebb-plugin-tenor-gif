@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/julianlam/nodebb-plugin-tenor-gif"
   },
+  "scripts": {
+    "lint": "eslint ."
+  },
   "keywords": [
     "nodebb",
     "plugin"
@@ -21,21 +24,17 @@
   },
   "readmeFilename": "README.md",
   "nbbpm": {
-    "compatibility": "^4.0.0"
+    "compatibility": "^4.14.0"
   },
   "dependencies": {
-    "@commitlint/cli": "^9.1.2",
-    "eslint": "8.x",
-    "lint-staged": "^13.0.3"
+
   },
   "devDependencies": {
     "@commitlint/cli": "^9.1.2",
     "@commitlint/config-angular": "^7.1.2",
-    "eslint": "^7.7.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-nodebb": "0.1.1",
-    "eslint-plugin-import": "2.x",
+    "eslint": "10.5.0",
+    "eslint-config-nodebb": "2.0.3",
     "husky": "^2.4.0",
-    "lint-staged": "^10.0.9"
+    "lint-staged": "^13.0.3"
   }
 }

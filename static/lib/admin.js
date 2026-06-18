@@ -1,7 +1,7 @@
 'use strict';
 
 define('admin/plugins/tenor-gif', ['settings'], function (Settings) {
-	var ACP = {};
+	const ACP = {};
 
 	ACP.init = function () {
 		Settings.load('tenor-gif', $('.tenor-gif-settings'));
