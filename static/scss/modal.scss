@@ -1,4 +1,12 @@
 .tenor-gif-modal {
+	#gif-query {
+		padding-right: 170px;
+		background-image: url('/assets/plugins/nodebb-plugin-tenor-gif/images/klipy-powered.svg');
+		background-repeat: no-repeat;
+		background-position: right 8px center;
+		background-size: 150px auto;
+	}
+
 	#gif-results {
 		overflow-x: auto;
 		white-space: nowrap;

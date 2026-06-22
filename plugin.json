@@ -16,5 +16,8 @@
 	"scss": [
 		"static/scss/modal.scss"
 	],
-	"templates": "static/templates"
+	"templates": "static/templates",
+	"staticDirs": {
+		"images": "static/images"
+	}
 }
