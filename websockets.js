@@ -1,6 +1,6 @@
 'use strict';
 
-const SocketPlugins = require.main.require('./src/socket.io/plugins');
+const SocketPlugins = nodebb.require('./src/socket.io/plugins');
 SocketPlugins['tenor-gif'] = {};
 
 module.exports.init = function () {

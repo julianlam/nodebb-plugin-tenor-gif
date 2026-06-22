@@ -1,14 +1,14 @@
 'use strict';
 
-const request = require.main.require('./src/request');
+const request = nodebb.require('./src/request');
 
 const controllers = require('./lib/controllers');
 const websockets = require('./websockets');
 
-const nconf = require.main.require('nconf');
-const meta = require.main.require('./src/meta');
-const slugify = require.main.require('./src/slugify');
-const ttlCache = require.main.require('./src/cache/ttl');
+const nconf = nodebb.require('nconf');
+const meta = nodebb.require('./src/meta');
+const slugify = nodebb.require('./src/slugify');
+const ttlCache = nodebb.require('./src/cache/ttl');
 
 const plugin = module.exports;
 
@@ -32,7 +32,7 @@ plugin.addAdminNavigation = function (header, callback) {
 	header.plugins.push({
 		route: '/plugins/tenor-gif',
 		icon: 'fa-tint',
-		name: 'Tenor GIF',
+		name: 'KLIPY (Tenor GIF)',
 	});
 
 	callback(null, header);
