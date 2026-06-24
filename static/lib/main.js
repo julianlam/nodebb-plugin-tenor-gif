@@ -80,7 +80,7 @@ $(document).ready(function () {
 
 	Tenor.populateDOM = function (resultsEl, gifs) {
 		require(['benchpress'], function (Benchpress) {
-			Benchpress.parse('partials/tenor-gif/list', {
+			Benchpress.render('partials/tenor-gif/list', {
 				gifs: gifs,
 			}, function (html) {
 				resultsEl.html(html);
@@ -90,7 +90,7 @@ $(document).ready(function () {
 
 	Tenor.showModal = function (callback) {
 		require(['benchpress', 'modals'], function (Benchpress, modals) {
-			Benchpress.parse('plugins/tenor-gif/modal', {}, async function (html) {
+			Benchpress.render('plugins/tenor-gif/modal', {}, async function (html) {
 				const modal = await modals.dialog({
 					title: 'Insert GIF',
 					message: html,
