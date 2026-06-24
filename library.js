@@ -86,6 +86,10 @@ plugin.query = async (query) => {
 
 	// Malformed return handling
 	if (!body.results) {
+		const invalidAPIKey = String(body?.errors?.message?.[0]).includes('The provided API key is invalid');
+		if (invalidAPIKey) {
+			throw new Error('[[error:invalid-api-key]]');
+		}
 		throw new Error('[[error:invalid-data]]');
 	}
 
