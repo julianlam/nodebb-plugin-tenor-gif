@@ -82,7 +82,7 @@ $(document).ready(function () {
 		require(['benchpress'], function (Benchpress) {
 			Benchpress.render('partials/tenor-gif/list', {
 				gifs: gifs,
-			}, function (html) {
+			}).then(function (html) {
 				resultsEl.html(html);
 			});
 		});
@@ -90,7 +90,7 @@ $(document).ready(function () {
 
 	Tenor.showModal = function (callback) {
 		require(['benchpress', 'modals'], function (Benchpress, modals) {
-			Benchpress.render('plugins/tenor-gif/modal', {}, async function (html) {
+			Benchpress.render('plugins/tenor-gif/modal', {}).then(async function (html) {
 				const modal = await modals.dialog({
 					title: 'Insert GIF',
 					message: html,
